@@ -1,0 +1,53 @@
+<div class="header">
+  <h1 class="title-list">Busqueda de Heroes</h1>
+  <button  color="primary" class="back" mat-raised-button (click)="back()" > <mat-icon>arrow_back</mat-icon> Volver</button>
+</div>
+<mat-divider class="custom-divider"></mat-divider>
+
+<div class="centered-container">
+  <!-- buscador -->
+  <div class="input-container">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Ingrese un Heroe" [formControl]="search" [matAutocomplete]="auto"
+        (keyup.enter)="onSearch()">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let suggestion of filteredSuggestions | async" [value]="suggestion">
+          {{ suggestion }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button (click)="onSearch()" mat-raised-button color="primary"
+      matTooltip="Más detalles..."><mat-icon>search</mat-icon> Buscar</button>
+  </div>
+  <!-- historial heroes -->
+  <div>
+    <div class="mat-chip-container" *ngIf="existingRecords.length > 0">
+      <mat-chip *ngFor="let item of existingRecords" (click)="onChipClick(item)">
+        {{item.name}}
+      </mat-chip>
+    </div>
+    <div class="not-found" *ngIf="existingRecords.length === 0">
+      <p>Aún no existe historial</p>
+    </div>
+  </div>
+  <!-- listado heroes -->
+  <div class="grid-container" *ngIf="hero.length > 0; else results">
+    <div *ngFor="let heroItem of hero" >
+      <app-card-hero [hero]="heroItem"></app-card-hero>
+    </div>
+  </div>
+</div>
+
+<!-- templates -->
+
+<ng-template #isLoading>
+  <div class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+
+<ng-template #results>
+  <h1>No existen resultados</h1>
+</ng-template>
+
+

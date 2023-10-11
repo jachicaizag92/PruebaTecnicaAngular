@@ -1,0 +1,15 @@
+<mat-card class="example-card">
+  <mat-card-header class="card">
+    <mat-card-title>{{hero.name}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="{{hero.thumbnail.path + '.' + hero.thumbnail.extension}}" alt="Photo of a Shiba Inu">
+  <mat-card-content class="content">
+    <p>
+      Ùltima modificación: {{hero.modified | date}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions class="custom-info">
+    <button [routerLink]="['/heroes/edit', hero.id]" mat-raised-button color="primary"
+      matTooltip="Más detalles..."><mat-icon>more_vert</mat-icon> Más información </button>
+  </mat-card-actions>
+</mat-card>

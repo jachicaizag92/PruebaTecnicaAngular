@@ -1,0 +1,70 @@
+.title-list {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.custom-divider {
+  margin-bottom: 3rem;
+}
+
+.grid-container {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 1000px;
+  padding-bottom: 40rem;
+
+  .info-hero {
+    margin-top: 10px;
+
+    .info-hero-card {
+      width: 30rem;
+      height: auto;
+    }
+
+    .back {
+      padding: 10px;
+      margin: 10px 0px;
+
+    }
+  }
+
+  .info-comics {
+    margin-bottom: 20px;
+
+    .comics-cards {
+      margin-top: 10px;
+      margin-bottom: 10px !important;
+    }
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    padding-bottom: 100rem;
+  }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.051);
+  z-index: 9999;
+}
+
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.051);
+  margin-top: 10px;
+}

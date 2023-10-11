@@ -1,0 +1,58 @@
+<h1 class="title-list">Detalles del Heroe <strong>{{name}}</strong></h1>
+<mat-divider class="custom-divider"></mat-divider>
+
+<div class="grid-container" *ngIf="hero.length > 0; else isLoading ">
+  <!-- Informacion principal -->
+  <div class="info-hero">
+    <mat-card class="info-hero-card">
+      <mat-card-header>
+        <mat-card-title>{{name}}</mat-card-title>
+        <mat-card-subtitle>última modificación: {{modified | date}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{urlImage}}" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <mat-chip-listbox>
+          <div>
+            <mat-card-subtitle>Descripción:</mat-card-subtitle>
+            <p><i>{{description ? description : "No existe descripción."}}</i></p>
+            <mat-card-subtitle>Historias:</mat-card-subtitle>
+            <mat-chip *ngFor="let storie of stories">
+              {{ stories.length > 0 ? storie.name : 'No existen historias.' }}
+            </mat-chip>
+          </div>
+        </mat-chip-listbox>
+      </mat-card-content>
+      <button  color="primary" class="back" mat-raised-button (click)="back()" > <mat-icon>arrow_back</mat-icon> Volver</button>
+    </mat-card>
+  </div>
+  <!-- informacion de comics -->
+  <div class="info-comics">
+    <ng-container *ngIf="heroInfoComics.length > 0; else isResult">
+      <mat-card *ngFor="let comic of heroInfoComics" class="comics-cards">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{comic.title}}</mat-card-title>
+            <mat-card-subtitle>{{!comic.description ? 'No existe descripción.' : comic.description}} </mat-card-subtitle>
+            <mat-card-subtitle><em>fecha: {{(validarFecha(comic.modified))}} </em> </mat-card-subtitle>
+            <img mat-card-lg-image src="{{comic.thumbnail.path + '.' + comic.thumbnail.extension}}">
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>
+
+
+<ng-template #isLoading>
+  <div class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+
+<ng-template #isResult>
+  <div class="not-found">
+    No existen Resultados de Comics
+  </div>
+</ng-template>

@@ -1,0 +1,35 @@
+<mat-sidenav-container fullscreen>
+  <!-- menu -->
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '250px'}">
+    <mat-toolbar>
+      <span>Menu</span>
+    </mat-toolbar>
+    <!-- items menu -->
+    <mat-nav-list class="custom-items" *ngFor="let item of itemsSidebar" [routerLink]="item.url"
+      (click)="sidenav.toggle()">
+      <mat-icon class="custom-items" matListItemIcon>{{item.icon}}</mat-icon>
+      {{item.label}}
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- icon -->
+  <mat-toolbar color="primary" (click)="sidenav.toggle()">
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <!-- contenido -->
+  <div class="flex-container">
+    <div class="content">
+      <router-outlet />
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="bottom-div">
+    Prueba Tecnica: John Chicaiza |
+    <a class="marvel-link" href="http://marvel.com\">Data provided by Marvel. © 2023 MARVEL</a>
+  </div>
+
+</mat-sidenav-container>

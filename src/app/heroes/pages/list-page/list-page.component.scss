@@ -1,0 +1,26 @@
+.title-list {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.custom-divider {
+  margin-bottom: 3rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.051);
+  z-index: 9999;
+}
