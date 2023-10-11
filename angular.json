@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/prueba-tecnica",
+            "outputPath": "docs",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -39,8 +39,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environment/environment.ts",
-                  "with": "src/environment/environment.prod.ts"
+                  "replace": "src/environments/enviroment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "budgets": [
